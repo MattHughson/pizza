@@ -1,4 +1,4 @@
-import { Pizza } from "lucide-react"
+
 
 export default function Logo() {
   return (

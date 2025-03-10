@@ -1,21 +1,13 @@
 "use client"
 
-import { useState } from "react"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Pizza, ThumbsUp } from "lucide-react"
-
-interface PizzaOption {
-  id: number
-  name: string
-  description: string
-  image: string
-  votes: number
-}
+import { useState } from "react";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Pizza, ThumbsUp } from "lucide-react";
 
 export default function PizzaVotingApp() {
-  const [pizzaOptions, setPizzaOptions] = useState<PizzaOption[]>([
+  const [pizzaOptions, setPizzaOptions] = useState([
     {
       id: 1,
       name: "Pizza Toni",
@@ -30,15 +22,15 @@ export default function PizzaVotingApp() {
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiacxEzf-q7mV_6MNLjAvtFhmOF9Rjx9QLMQ&s",
       votes: 18,
     },
-    
-  ])
+  ]);
 
-  const handleVote = (id: number) => {
-    setPizzaOptions(pizzaOptions.map((pizza) => (pizza.id === id ? { ...pizza, votes: pizza.votes + 1 } : pizza)))
-  }
+  const handleVote = (id) => {
+    setPizzaOptions(
+      pizzaOptions.map((pizza) => (pizza.id === id ? { ...pizza, votes: pizza.votes + 1 } : pizza))
+    );
+  };
 
-  // Find the pizza with the most votes
-  const mostVoted = [...pizzaOptions].sort((a, b) => b.votes - a.votes)[0]
+  const mostVoted = [...pizzaOptions].sort((a, b) => b.votes - a.votes)[0];
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
@@ -71,6 +63,5 @@ export default function PizzaVotingApp() {
         </Card>
       ))}
     </div>
-  )
+  );
 }
-
